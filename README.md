@@ -6,6 +6,8 @@
 
 该仓库是公开展示版，不是原始课程/团队项目的完整私有代码。仓库中的日志、指标和图表均为 synthetic/demo 数据，用于说明工程拆解、控制流程和测试思路，不代表真实硬件验收结果。
 
+固件目录中的 Arduino sketch 是 sanitized skeleton，用于展示状态机组织方式和接口边界，不是完整现场调参版本，也不包含私有传感器标定、真实硬件日志或不可公开路径。
+
 ## 项目背景
 
 原项目方向是工业危险废物自主管理机器人系统开发，平台为 Arduino Mega 2560，包含直流电机驱动、灰度巡线传感器、HC-SR04 超声波、颜色传感器、LCD、语音模块、ESP8266/Serial1 遥测和舵机机械臂等模块。公开版只保留可讲解的控制架构和合成数据分析流程。
@@ -56,4 +58,3 @@ arduino-mega-pick-place-showcase/
 - Arduino sketch 是 sanitized skeleton，用于说明状态机结构，不是完整现场调参版本。
 - Python 仿真是简化 demo，不是物理动力学模型。
 - 所有 metrics 均来自合成 demo 数据。
-

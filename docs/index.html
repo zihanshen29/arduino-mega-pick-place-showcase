@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arduino 取放分拣机器人项目展示</title>
+  <title>Arduino 取放分拣机器人作品展示</title>
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%23a74718"/><path d="M18 44h28M25 44V28l10-8 9 7M35 20v18M30 38h12" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="28" r="4" fill="white"/><text x="32" y="58" text-anchor="middle" font-size="10" font-family="Arial" fill="white">ARD</text></svg>'>
   <style>
     :root { --ink:#17202a; --muted:#526171; --line:#d8e0e8; --panel:#fff; --bg:#f7f9fb; --accent:#a74718; }
     * { box-sizing: border-box; }
     body { margin:0; font-family: Arial, "Microsoft YaHei", sans-serif; color:var(--ink); background:var(--bg); }
-    main { max-width:1040px; margin:0 auto; padding:44px 22px 56px; }
+    main { max-width:1040px; margin:0 auto; padding:44px 22px 32px; }
     h1 { font-size:36px; margin:0 0 10px; letter-spacing:0; }
     h2 { margin-top:30px; font-size:22px; }
     p { line-height:1.7; }
@@ -16,7 +17,9 @@
     a:hover { text-decoration:underline; }
     .hero,.panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px; }
     .subtitle { color:var(--muted); margin:0; }
-    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+    .candidate { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 4px; color:#334155; }
+    .candidate span,.candidate a { border:1px solid var(--line); border-radius:999px; padding:6px 10px; background:#fff7f1; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
     .button { border:1px solid var(--accent); border-radius:6px; padding:9px 12px; color:var(--accent); background:#fff4ed; }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; }
     table { width:100%; border-collapse:collapse; background:#fff; }
@@ -25,17 +28,24 @@
     code { background:#f3eee9; padding:2px 5px; border-radius:4px; }
     .tagrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
     .tag { background:#f3eee9; border:1px solid var(--line); border-radius:999px; padding:6px 10px; color:#334155; }
+    footer { max-width:1040px; margin:0 auto; padding:0 22px 38px; color:var(--muted); }
+    footer nav { display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; }
   </style>
 </head>
 <body>
   <main>
     <section class="hero">
-      <h1>Arduino 取放分拣机器人项目展示</h1>
-      <p class="subtitle">基于 Arduino Mega 2560 的移动取放/分拣机器人公开展示版：用有限状态机、合成传感器日志和指标复盘展示嵌入式控制与联调能力。</p>
+      <h1>Arduino 取放分拣机器人作品展示</h1>
+      <p class="subtitle">基于 Arduino Mega 2560 的移动取放/分拣机器人公开展示版：用有限状态机、合成传感器日志和指标复盘展示嵌入式控制、联调和工程拆解能力。</p>
+      <div class="candidate" aria-label="候选人信息">
+        <span>沈子涵</span>
+        <a href="mailto:2072475827@qq.com">2072475827@qq.com</a>
+        <a href="https://zihanshen29.github.io/">作品集主页</a>
+      </div>
       <div class="actions">
         <a class="button" href="https://github.com/zihanshen29/arduino-mega-pick-place-showcase">查看 GitHub 仓库</a>
-        <a class="button" href="./architecture.md">架构说明</a>
-        <a class="button" href="./interview_notes.md">面试讲解</a>
+        <a class="button" href="https://github.com/zihanshen29/arduino-mega-pick-place-showcase/blob/main/docs/architecture.md">架构说明</a>
+        <a class="button" href="https://github.com/zihanshen29/arduino-mega-pick-place-showcase/blob/main/docs/interview_notes.md">面试讲解</a>
       </div>
     </section>
 
@@ -53,13 +63,13 @@
       <tr><td>Arduino FSM</td><td>提供 sanitized sketch skeleton</td><td>不是现场完整调参版本</td></tr>
       <tr><td>巡线与目标确认</td><td>用合成日志展示接口和指标</td><td>不声明真实硬件性能</td></tr>
       <tr><td>颜色识别与投放</td><td>展示状态流和置信度字段</td><td>不包含真实传感器标定表</td></tr>
-      <tr><td>日志分析</td><td>可运行，有 pytest 覆盖</td><td>只用于公开 demo 复盘</td></tr>
+      <tr><td>日志分析</td><td>可运行，并有 pytest 覆盖</td><td>只用于公开 demo 复盘</td></tr>
     </table>
 
     <h2>本地运行</h2>
     <div class="panel">
       <p><code>pip install -e ".[test]"</code></p>
-      <p><code>python scripts/run_demo_pipeline.py</code></p>
+      <p><code>python scripts\run_demo_pipeline.py</code></p>
       <p><code>pytest</code></p>
     </div>
 
@@ -75,7 +85,15 @@
     </div>
 
     <h2>合规边界</h2>
-    <p>该仓库是公开展示版，不包含真实私有硬件日志、账号信息、内部路径或完整现场调参代码。所有日志和指标均为 synthetic/demo 数据。</p>
+    <p>该仓库是公开展示版，不是原始完整私有代码。固件文件是 sanitized skeleton，用于说明状态机组织方式；所有日志、指标和图表均为 synthetic/demo 数据，不包含真实私有硬件日志、账号信息、内部路径或完整现场调参代码。</p>
   </main>
+  <footer>
+    <strong>沈子涵 Showcase Series</strong>
+    <nav>
+      <a href="https://zihanshen29.github.io/robot-a1-showcase/">A1 机器人</a>
+      <a href="https://zihanshen29.github.io/5g-ffr-showcase/">5G FFR</a>
+      <a href="https://zihanshen29.github.io/arduino-mega-pick-place-showcase/">Arduino 取放分拣</a>
+    </nav>
+  </footer>
 </body>
 </html>
