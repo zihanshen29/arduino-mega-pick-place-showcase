@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arduino 取放分拣机器人项目展示</title>
+  <style>
+    :root { --ink:#17202a; --muted:#526171; --line:#d8e0e8; --panel:#fff; --bg:#f7f9fb; --accent:#a74718; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Arial, "Microsoft YaHei", sans-serif; color:var(--ink); background:var(--bg); }
+    main { max-width:1040px; margin:0 auto; padding:44px 22px 56px; }
+    h1 { font-size:36px; margin:0 0 10px; letter-spacing:0; }
+    h2 { margin-top:30px; font-size:22px; }
+    p { line-height:1.7; }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .hero,.panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px; }
+    .subtitle { color:var(--muted); margin:0; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+    .button { border:1px solid var(--accent); border-radius:6px; padding:9px 12px; color:var(--accent); background:#fff4ed; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; }
+    table { width:100%; border-collapse:collapse; background:#fff; }
+    th,td { border:1px solid var(--line); padding:10px; text-align:left; vertical-align:top; }
+    th { background:#f6e9df; }
+    code { background:#f3eee9; padding:2px 5px; border-radius:4px; }
+    .tagrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .tag { background:#f3eee9; border:1px solid var(--line); border-radius:999px; padding:6px 10px; color:#334155; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <h1>Arduino 取放分拣机器人项目展示</h1>
+      <p class="subtitle">基于 Arduino Mega 2560 的移动取放/分拣机器人公开展示版：用有限状态机、合成传感器日志和指标复盘展示嵌入式控制与联调能力。</p>
+      <div class="actions">
+        <a class="button" href="https://github.com/zihanshen29/arduino-mega-pick-place-showcase">查看 GitHub 仓库</a>
+        <a class="button" href="./architecture.md">架构说明</a>
+        <a class="button" href="./interview_notes.md">面试讲解</a>
+      </div>
+    </section>
+
+    <h2>展示模块</h2>
+    <div class="grid">
+      <div class="panel"><strong>有限状态机</strong><br>离开仓位、巡线、目标确认、抓取、颜色识别、分类投放、回程复位。</div>
+      <div class="panel"><strong>传感器联调</strong><br>巡线误差、超声波距离、颜色置信度、舵机角度和串口遥测。</div>
+      <div class="panel"><strong>控制输出</strong><br>PWM 差速修正和状态切换事件，便于复盘任务流程。</div>
+      <div class="panel"><strong>指标复盘</strong><br>用 Python 解析合成日志，统计完成步数、状态占比、巡线误差和遥测完整率。</div>
+    </div>
+
+    <h2>项目状态</h2>
+    <table>
+      <tr><th>模块</th><th>公开展示状态</th><th>边界说明</th></tr>
+      <tr><td>Arduino FSM</td><td>提供 sanitized sketch skeleton</td><td>不是现场完整调参版本</td></tr>
+      <tr><td>巡线与目标确认</td><td>用合成日志展示接口和指标</td><td>不声明真实硬件性能</td></tr>
+      <tr><td>颜色识别与投放</td><td>展示状态流和置信度字段</td><td>不包含真实传感器标定表</td></tr>
+      <tr><td>日志分析</td><td>可运行，有 pytest 覆盖</td><td>只用于公开 demo 复盘</td></tr>
+    </table>
+
+    <h2>本地运行</h2>
+    <div class="panel">
+      <p><code>pip install -e ".[test]"</code></p>
+      <p><code>python scripts/run_demo_pipeline.py</code></p>
+      <p><code>pytest</code></p>
+    </div>
+
+    <h2>技术关键词</h2>
+    <div class="tagrow">
+      <span class="tag">Arduino Mega 2560</span>
+      <span class="tag">C/C++</span>
+      <span class="tag">FSM</span>
+      <span class="tag">Line following</span>
+      <span class="tag">HC-SR04</span>
+      <span class="tag">Servo arm</span>
+      <span class="tag">Telemetry analysis</span>
+    </div>
+
+    <h2>合规边界</h2>
+    <p>该仓库是公开展示版，不包含真实私有硬件日志、账号信息、内部路径或完整现场调参代码。所有日志和指标均为 synthetic/demo 数据。</p>
+  </main>
+</body>
+</html>

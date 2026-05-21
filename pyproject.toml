@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arduino-mega-pick-place-showcase"
+version = "0.1.0"
+description = "Sanitized Arduino Mega pick-and-place robot showcase with synthetic FSM logs and tests."
+requires-python = ">=3.10"
+dependencies = [
+  "pandas>=2.0",
+  "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
