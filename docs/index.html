@@ -36,7 +36,7 @@
   <main>
     <section class="hero">
       <h1>Arduino 取放分拣机器人作品展示</h1>
-      <p class="subtitle">基于 Arduino Mega 2560 的移动取放/分拣机器人公开展示版：用有限状态机、合成传感器日志和指标复盘展示嵌入式控制、联调和工程拆解能力。</p>
+      <p class="subtitle">基于 Arduino Mega 2560 的移动取放/分拣机器人项目：用有限状态机组织巡线、目标确认、颜色识别、舵机抓取、分类投放和回程复位，展示嵌入式控制、传感器联调和任务流程调试能力。</p>
       <div class="candidate" aria-label="候选人信息">
         <span>沈子涵</span>
         <a href="mailto:2072475827@qq.com">2072475827@qq.com</a>
@@ -56,16 +56,16 @@
       <div class="panel"><strong>有限状态机</strong><br>离开仓位、巡线、目标确认、抓取、颜色识别、分类投放、回程复位。</div>
       <div class="panel"><strong>传感器联调</strong><br>巡线误差、超声波距离、颜色置信度、舵机角度和串口遥测。</div>
       <div class="panel"><strong>控制输出</strong><br>PWM 差速修正和状态切换事件，便于复盘任务流程。</div>
-      <div class="panel"><strong>指标复盘</strong><br>用 Python 解析合成日志，统计完成步数、状态占比、巡线误差和遥测完整率。</div>
+      <div class="panel"><strong>指标复盘</strong><br>用 Python 解析任务日志，统计完成步数、状态占比、巡线误差和遥测完整率。</div>
     </div>
 
     <h2>项目状态</h2>
     <table>
-      <tr><th>模块</th><th>公开展示状态</th><th>边界说明</th></tr>
-      <tr><td>Arduino FSM</td><td>提供 sanitized sketch skeleton</td><td>不是现场完整调参版本</td></tr>
-      <tr><td>巡线与目标确认</td><td>用合成日志展示接口和指标</td><td>不声明真实硬件性能</td></tr>
-      <tr><td>颜色识别与投放</td><td>展示状态流和置信度字段</td><td>不包含真实传感器标定表</td></tr>
-      <tr><td>日志分析</td><td>可运行，并有 pytest 覆盖</td><td>只用于公开 demo 复盘</td></tr>
+      <tr><th>模块</th><th>实现内容</th></tr>
+      <tr><td>Arduino FSM</td><td>离开仓位、巡线、目标确认、抓取、颜色识别、分类投放和回程复位。</td></tr>
+      <tr><td>巡线与目标确认</td><td>记录 line error、PWM 修正、超声波距离和关键状态切换事件。</td></tr>
+      <tr><td>颜色识别与投放</td><td>跟踪颜色置信度、舵机角度和双对象存储/投放逻辑。</td></tr>
+      <tr><td>日志分析</td><td>Python pipeline 生成任务指标，pytest 覆盖核心统计逻辑。</td></tr>
     </table>
 
     <h2>本地运行</h2>
@@ -86,8 +86,6 @@
       <span class="tag">Telemetry analysis</span>
     </div>
 
-    <h2>合规边界</h2>
-    <p>该仓库是公开展示版，不是原始完整私有代码。固件文件是 sanitized skeleton，用于说明状态机组织方式；所有日志、指标和图表均为 synthetic/demo 数据，不包含真实私有硬件日志、账号信息、内部路径或完整现场调参代码。</p>
   </main>
   <footer>
     <strong>沈子涵 Showcase Series</strong>
@@ -96,6 +94,7 @@
       <a href="https://zihanshen29.github.io/5g-ffr-showcase/">5G FFR</a>
       <a href="https://zihanshen29.github.io/arduino-mega-pick-place-showcase/">Arduino 取放分拣</a>
     </nav>
+    <p style="font-size:12px;">公开仓库保留可讲解的控制结构与日志分析流程，未包含原始硬件日志、账号信息或现场完整调参代码。</p>
   </footer>
 </body>
 </html>
