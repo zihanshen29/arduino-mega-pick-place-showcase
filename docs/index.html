@@ -36,7 +36,7 @@
   <main>
     <section class="hero">
       <h1>Arduino 取放分拣机器人作品展示</h1>
-      <p class="subtitle">基于 Arduino Mega 2560 的移动取放/分拣机器人项目：用有限状态机组织巡线、目标确认、颜色识别、舵机抓取、分类投放和回程复位，展示嵌入式控制、传感器联调和任务流程调试能力。</p>
+      <p class="subtitle">基于 Arduino Mega 2560 的移动取放/分拣机器人项目：本人任 6 人团队队长兼软件工程师，用有限状态机组织巡线、目标确认、颜色识别、舵机抓取、分类投放和回程复位，展示嵌入式控制、传感器联调和任务流程调试能力。</p>
       <div class="candidate" aria-label="候选人信息">
         <span>沈子涵</span>
         <a href="mailto:2072475827@qq.com">2072475827@qq.com</a>
@@ -59,10 +59,28 @@
       <div class="panel"><strong>指标复盘</strong><br>用 Python 解析任务日志，统计完成步数、状态占比、巡线误差和遥测完整率。</div>
     </div>
 
+    <h2>两个工程故事</h2>
+    <div class="grid">
+      <div class="panel"><strong>转弯消隐窗</strong><br>转弯终止条件是黑线重捕获，起始阶段先加消隐延迟离开原黑线，再武装检测新线；成功率从约 30% 提升到接近 100%。</div>
+      <div class="panel"><strong>云台双物块</strong><br>可旋转云台一次携带两个物块，替代重跑两次；搬运时间缩短约 43%，方案从提出到联调稳定约 2 周。</div>
+    </div>
+
+    <h2>固件核实信息</h2>
+    <table>
+      <tr><th>项目</th><th>已核实参数</th></tr>
+      <tr><td>分工</td><td>6 人团队队长 + 软件工程师；控制逻辑与软件全部本人负责，队友分管机械与硬件装调。</td></tr>
+      <tr><td>PID</td><td>Kp=25 / Ki=0.1 / Kd=5</td></tr>
+      <tr><td>云台舵机</td><td>SLOT1=0° / SLOT2=145°（170°−25° 现场修正），smoothRotate 2°/步 + 50 ms</td></tr>
+      <tr><td>颜色识别</td><td>HSL 阈值 + 3 秒 / 10 样本投票</td></tr>
+      <tr><td>超声取物</td><td>3 次连续采样去抖</td></tr>
+      <tr><td>直角弯 / 掉头</td><td>直角弯为 280–750 ms 延时 + 黑线重捕获；掉头为 1545–1600 ms 定时开环。</td></tr>
+    </table>
+    <p class="subtitle">真实参数以文字表格呈现；公开 firmware 仍是 sanitized skeleton，不发布现场完整调参版本。</p>
+
     <h2>项目状态</h2>
     <table>
       <tr><th>模块</th><th>实现内容</th></tr>
-      <tr><td>Arduino FSM</td><td>离开仓位、巡线、目标确认、抓取、颜色识别、分类投放和回程复位。</td></tr>
+      <tr><td>Arduino FSM</td><td>离开仓位、巡线、目标确认、抓取、颜色识别、分类投放和回程复位，按出发、返回、放置阶段切换逻辑。</td></tr>
       <tr><td>巡线与目标确认</td><td>记录 line error、PWM 修正、超声波距离和关键状态切换事件。</td></tr>
       <tr><td>颜色识别与投放</td><td>跟踪颜色置信度、舵机角度和双对象存储/投放逻辑。</td></tr>
       <tr><td>日志分析</td><td>Python pipeline 生成任务指标，pytest 覆盖核心统计逻辑。</td></tr>
@@ -94,7 +112,7 @@
       <a href="https://zihanshen29.github.io/5g-ffr-showcase/">5G FFR</a>
       <a href="https://zihanshen29.github.io/arduino-mega-pick-place-showcase/">Arduino 取放分拣</a>
     </nav>
-    <p style="font-size:12px;">公开仓库保留可讲解的控制结构与日志分析流程，未包含原始硬件日志、账号信息或现场完整调参代码。</p>
+    <p style="font-size:12px;">公开仓库保留可讲解的控制结构与日志分析流程，未包含原始硬件日志、账号信息或现场完整调参代码。最近更新：2026-07。</p>
   </footer>
 </body>
 </html>
