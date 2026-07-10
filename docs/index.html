@@ -22,6 +22,7 @@
     .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
     .button { border:1px solid var(--accent); border-radius:6px; padding:9px 12px; color:var(--accent); background:#fff4ed; }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; }
+    .media-photo { width:100%; max-height:520px; object-fit:cover; border:1px solid var(--line); border-radius:8px; background:#fff; }
     table { width:100%; border-collapse:collapse; background:#fff; }
     th,td { border:1px solid var(--line); padding:10px; text-align:left; vertical-align:top; }
     th { background:#f6e9df; }
@@ -63,6 +64,20 @@
     <div class="grid">
       <div class="panel"><strong>转弯消隐窗</strong><br>转弯终止条件是黑线重捕获，起始阶段先加消隐延迟离开原黑线，再武装检测新线；成功率从约 30% 提升到接近 100%。</div>
       <div class="panel"><strong>云台双物块</strong><br>可旋转云台一次携带两个物块，替代重跑两次；搬运时间缩短约 43%，方案从提出到联调稳定约 2 周。</div>
+    </div>
+
+    <h2>成效摘要</h2>
+    <table>
+      <tr><th>改进项</th><th>方法</th><th>量化效果</th></tr>
+      <tr><td>转弯逻辑</td><td>黑线重捕获 + 起始消隐延迟</td><td>成功率从约 30% 提升到接近 100%</td></tr>
+      <tr><td>双物块搬运</td><td>可旋转云台一次携带两个物块，替代重跑两次</td><td>搬运时间缩短约 43%；从方案提出到联调稳定约 2 周</td></tr>
+    </table>
+
+    <h2>实物照片与运行视频</h2>
+    <div class="panel">
+      <img class="media-photo" src="./assets/media/arduino_dual_block_carry_01.jpg" alt="Arduino 机器人云台双物块搬运实物照片">
+      <p class="subtitle">Real project photo — dual-block carrying (2025). 图中为机器人云台携带红色和黑色物块；照片来自真实项目，和本仓库中的合成 demo 日志分开呈现。</p>
+      <p class="subtitle">运行视频素材整理中；入库前会统一去音轨，并对队友出镜素材取得同意或裁剪/打码。</p>
     </div>
 
     <h2>固件核实信息</h2>

@@ -34,6 +34,13 @@
 
 决策：加装可旋转云台，一次携带两个物块，投放阶段逐个检测颜色、旋转云台对位并按颜色映射投放；循迹逻辑按出发、返回、放置阶段拆分，由 FSM 切换。结果：搬运时间相比重跑方案缩短约 43%，云台方案从提出到联调稳定约 2 周。
 
+### Table AR-1. Impact summary
+
+| Improvement | Method | Quantified effect |
+| --- | --- | --- |
+| Turning logic | black-line recapture + start blanking delay | success rate about 30% -> near 100% |
+| Dual-object carrying | one rotating turntable carries two blocks instead of running twice | about 43% time saving; about 2 weeks to stabilize in integration |
+
 ## Firmware facts (from the original project)
 
 真实参数以表格文字呈现；公开 sketch 仍是 sanitized skeleton，不改成现场完整调参版本。
@@ -48,6 +55,14 @@
 | Ultrasonic debounce | 3 consecutive samples |
 | Right-angle turn | 280–750 ms delay + black-line recapture |
 | Turnaround | 1545–1600 ms timed open-loop turn |
+
+## 实物照片与运行视频
+
+![Real project photo: dual-block carrying](docs/assets/media/arduino_dual_block_carry_01.jpg)
+
+Caption: Real project photo — dual-block carrying (2025). The photo shows the robot carrying red and black blocks on the turntable; it is separate from the synthetic/demo logs in this repository.
+
+Video footage: 素材整理中。后续视频入库前会统一去音轨，队友出镜素材需取得同意或裁剪/打码。
 
 ## 快速运行
 
@@ -67,6 +82,8 @@ pytest
 arduino-mega-pick-place-showcase/
 |-- README.md
 |-- docs/
+|   |-- assets/
+|   |   `-- media/
 |   |-- index.html
 |   |-- architecture.md
 |   `-- interview_notes.md
