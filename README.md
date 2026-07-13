@@ -1,6 +1,8 @@
 # Arduino Mega 取放分拣机器人展示仓库
 
-这是一个面向简历和面试展示的 Arduino Mega 2560 移动取放/分拣机器人 showcase 仓库。仓库用合成传感器日志和简化状态机复刻项目工程结构，展示有限状态机、巡线修正、超声波目标确认、颜色识别、舵机抓取和任务指标分析流程。
+[![CI](https://github.com/zihanshen29/arduino-mega-pick-place-showcase/actions/workflows/ci.yml/badge.svg)](https://github.com/zihanshen29/arduino-mega-pick-place-showcase/actions/workflows/ci.yml)
+
+这是一个面向公开工程审阅的 Arduino Mega 2560 移动取放/分拣机器人项目伴随仓库。仓库用合成传感器日志和简化状态机复刻项目工程结构，展示有限状态机、巡线修正、超声波目标确认、颜色识别、舵机抓取和任务指标分析流程。
 
 ## 仓库定位
 
@@ -10,7 +12,7 @@
 
 ## 项目背景
 
-原项目方向是工业危险废物自主管理机器人系统开发，平台为 Arduino Mega 2560，包含直流电机驱动、灰度巡线传感器、HC-SR04 超声波、颜色传感器、LCD、语音模块、ESP8266/Serial1 遥测和舵机机械臂等模块。本人任 6 人团队队长兼软件工程师：控制逻辑与软件全部由本人负责，队友分管机械结构与硬件装调。公开版只保留可讲解的控制架构和合成数据分析流程。
+原项目方向是工业危险废物自主管理机器人系统开发，平台为 Arduino Mega 2560，包含直流电机驱动、灰度巡线传感器、HC-SR04 超声波、颜色传感器、LCD、语音模块、ESP8266/Serial1 遥测和舵机机械臂等模块。本人任 6 人团队队长兼软件工程师：控制逻辑与软件全部由本人负责，队友分管机械结构与硬件装调。公开版保留可审阅的控制架构和合成数据分析流程。
 
 ## 展示能力
 
@@ -18,7 +20,7 @@
 - 用合成日志展示 line error、PWM 修正、超声波距离、颜色置信度、舵机角度和状态切换事件。
 - 用 Python 脚本生成 sample logs、解析日志、计算任务完成步数、状态占比、巡线误差和分类成功率。
 - 提供一份脱敏 Arduino C/C++ demo firmware skeleton，展示状态机组织方式。
-- 提供中文 GitHub Pages 项目页和面试讲解材料。
+- 提供中文 GitHub Pages 项目页和公开工程说明。
 
 ## Two engineering stories
 
@@ -56,13 +58,11 @@
 | Right-angle turn | 280–750 ms delay + black-line recapture |
 | Turnaround | 1545–1600 ms timed open-loop turn |
 
-## 实物照片与运行视频
+## 实物照片
 
 ![Real project photo: dual-block carrying](docs/assets/media/arduino_dual_block_carry_01.jpg)
 
 Caption: Real project photo — dual-block carrying (2025). The photo shows the robot carrying red and black blocks on the turntable; it is separate from the synthetic/demo logs in this repository.
-
-Video footage: 素材整理中。后续视频入库前会统一去音轨，队友出镜素材需取得同意或裁剪/打码。
 
 ## 快速运行
 
@@ -85,8 +85,7 @@ arduino-mega-pick-place-showcase/
 |   |-- assets/
 |   |   `-- media/
 |   |-- index.html
-|   |-- architecture.md
-|   `-- interview_notes.md
+|   `-- architecture.md
 |-- firmware/
 |   `-- robot_controller_demo/
 |       `-- robot_controller_demo.ino
